@@ -10,11 +10,11 @@ function Invoke-chiaRPCCommand {
     )
 
     Try{
+        $Cert = Get-chiaPFXCert -Service $Service -ErrorAction Stop
         switch ($Service){
             "Harvester" {
                 Write-Information "Harvester service flagged, setting port and getting cert"
                 $Port = 8560
-                $Cert = Get-HarvesterPFX
             }
             "Wallet" {
                 $Port = 9256
@@ -31,7 +31,7 @@ function Invoke-chiaRPCCommand {
         } #switch
     }
     catch{
-       Write-Error "Unable to grab/create Cert for $Service service" -ErrorAction Stop
+       Write-Error "Unable to grab/create Cert for $Service service: $_" -ErrorAction Stop
     }
 
     $Param = @{
@@ -47,6 +47,7 @@ function Invoke-chiaRPCCommand {
     }
     catch [System.InvalidOperationException]{
         if ($_.Exception.Message -like "*Could not establish trust relationship for the SSL/TLS secure channel.*"){
+            Write-Information "Insecure sessions not allowed, setting Cert Call Back to allow."
             Set-CertCallBack
             Invoke-RestMethod @Param
         }
