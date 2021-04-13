@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>PSChia.ChiaBlockChainState</Name>
+      <ViewSelectedBy>
+        <TypeName>PSChia.ChiaBlockChainState</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+            <TableColumnHeader>
+                <Label>Synced</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>Difficulty</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>Height</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>SpacePB</Label>
+                <Alignment>Right</Alignment>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>MemPool Size</Label>
+                <Alignment>Right</Alignment>
+            </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Synced</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>difficulty</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Height</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SpacePB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>mempool_size</PropertyName>
+              </TableColumnItem>                    
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
