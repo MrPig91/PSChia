@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>PSChia.ChiaPlot</Name>
+      <ViewSelectedBy>
+        <TypeName>PSChia.ChiaPlot</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+            <TableColumnHeader>
+                <Label>Parent Folder</Label>
+                <Width>15</Width>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>File Size (GB)</Label>
+                <Width>15</Width>
+                <Alignment>Right</Alignment>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>K-Size</Label>
+                <Width>6</Width>
+                <Alignment>Center</Alignment>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>Time Modified</Label>
+                <Width>20</Width>
+            </TableColumnHeader>
+            <TableColumnHeader>
+                <Label>File Name</Label>
+            </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Parent_Folder</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>File_SizeGB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>K-Size</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Modified_Time</PropertyName>
+                <FormatString>{0:MMM} {0:dd} {0:yyyy}</FormatString>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>File_Name</PropertyName>
+              </TableColumnItem>                    
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
