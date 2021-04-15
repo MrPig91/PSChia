@@ -1,4 +1,4 @@
-function Add-PlotDirectory {
+function Add-ChiaPlotDirectory {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory, ValueFromPipelineByPropertyName,ValueFromPipeline)]
