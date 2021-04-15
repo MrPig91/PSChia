@@ -14,9 +14,9 @@ function Remove-ChiaPlot {
                 Service = "Harvester"
             }
 
-            Write-Warning "Function not tested yet and so not yet implemented"
-            #$response = Invoke-chiaRPCCommand @Param
-            #$response
+            #Write-Warning "Function not tested yet and so not yet implemented"
+            $response = Invoke-chiaRPCCommand @Param
+            $response
         }
     }
 }
