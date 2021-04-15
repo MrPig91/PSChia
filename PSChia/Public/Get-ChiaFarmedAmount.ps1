@@ -8,5 +8,11 @@ function Get-ChiaFarmedAmount {
         Service = "Wallet"
     }
 
-    Invoke-chiaRPCCommand @Param
+    $Response = Invoke-chiaRPCCommand @Param
+    if ($Response.success){
+        $Response
+    }
+    else{
+        Write-Error "Command Failed: $($Response.error)"
+    }
 }
