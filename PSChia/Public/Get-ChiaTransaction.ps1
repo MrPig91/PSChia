@@ -1,7 +1,8 @@
 function Get-ChiaTransaction {
     [CmdletBinding(DefaultParameterSetName = "WalletId")]
     param(
-        [Parameter(Mandatory, ParameterSetName = "TransactionId")]
+        #[Parameter(Mandatory, ParameterSetName = "TransactionId")]
+        #[string]$TransactionID,
 
         [Parameter(Mandatory, ParameterSetName = "WalletId")]
         [ValidateRange(1, [int]::MaxValue)]
@@ -18,11 +19,23 @@ function Get-ChiaTransaction {
     else{
         $Param = @{
             Command = "get_transaction"
-            Parameters = @{transaction_id = $WalletId} | ConvertTo-Json
+            Parameters = @{transaction_id = $TransactionID} | ConvertTo-Json
             Service = "Wallet"
         }
     }
 
-    Invoke-chiaRPCCommand @Param
+    try{
+        $Response = Invoke-chiaRPCCommand @Param -ErrorAction Stop
+        if ($Response.success){
+            $Response.transactions
+            #$Response.transaction
+        }
+        else{
+            Write-Error "Command Failed: $($Response.error)"
+        }
+    }
+    catch{
+        $PSCmdlet.WriteError($_)
+    }
 
 }
