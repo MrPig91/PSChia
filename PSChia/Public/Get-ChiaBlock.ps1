@@ -3,6 +3,7 @@ function Get-ChiaBlock {
     param(
         [Parameter(ValueFromPipeline,ValueFromPipelineByPropertyName,
         ParameterSetName = "SingleBlock")]
+        [Alias("header_hash")]
         [string[]]$HeaderHash,
 
         [Parameter(Mandatory,ParameterSetName = "Blocks")]
