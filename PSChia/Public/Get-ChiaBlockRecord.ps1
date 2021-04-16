@@ -34,15 +34,14 @@ function Get-ChiaBlockRecord{
             "Height" {
                 foreach ($h in $Height){
                     $Param["Parameters"] = (@{height = $h} | ConvertTo-Json)
-                }
-
-                 $Response = Invoke-chiaRPCCommand @Param
-                 if ($Response.success){
-                     $Response.block_record
-                 }
-                 else{
-                    Write-Error "Command Failed: $($Response.error)"
-                 }
+                    $Response = Invoke-chiaRPCCommand @Param
+                    if ($Response.success){
+                        $Response.block_record
+                    }
+                    else{
+                       Write-Error "Command Failed: $($Response.error)"
+                    }
+                } #foreach
             }
 
             "HeaderHash" {
