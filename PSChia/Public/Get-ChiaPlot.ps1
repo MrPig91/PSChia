@@ -1,4 +1,4 @@
-function Get-ChiaPlots {
+function Get-ChiaPlot {
     [CmdletBinding()]
     param(
     )
