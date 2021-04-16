@@ -1,4 +1,4 @@
-function Invoke-RefreshPlots {
+function Invoke-ChiaRefreshPlots {
     [CmdletBinding()]
     param()
 
