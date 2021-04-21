@@ -3,12 +3,14 @@ function Get-chiaPFXCert{
     param(
         [Parameter(Mandatory)]
         [ValidateSet("Harvester","Wallet","Full_Node","Farmer")]
-        [string]$Service
+        [string]$Service,
+        
+        [string]$HostName = "Localhost"
     )
     Write-Information "Grabbing $Service PFX Cert"
     $ErrorActionPreference = "Stop"
     try{
-        $PSChiaPath = "$ENV:LOCALAPPDATA\PSChia"
+        $PSChiaPath = "$ENV:LOCALAPPDATA\PSChia\$HostName"
         if (Test-Path "$PSChiaPath\$Service.pfx"){
             $encryptedPassword = Get-Content "$PSChiaPath\$($Service)Pass.txt"
             $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
@@ -18,7 +20,7 @@ function Get-chiaPFXCert{
             $ErrorActionPreference = "Continue"
             return $cert
         }
-        else{
+        elseif ($HostName -eq "Localhost"){
             Write-Information "$Service Cert not found, going to try and create one now"
             New-chiaPFXCert -Service $Service -ErrorAction Stop
             Get-chiaPFXCert -Service $Service -ErrorAction Stop
