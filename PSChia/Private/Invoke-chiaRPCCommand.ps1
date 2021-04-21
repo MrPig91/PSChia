@@ -6,11 +6,13 @@ function Invoke-chiaRPCCommand {
         [string]$Parameters,
 
         [ValidateSet("Harvester","Wallet","Full_Node","Daemon","Farmer")]
-        [string]$Service
+        [string]$Service,
+
+        [string]$HostName = $Script:HostName
     )
 
     Try{
-        $Cert = Get-chiaPFXCert -Service $Service -ErrorAction Stop
+        $Cert = Get-chiaPFXCert -Service $Service -HostName $HostName -ErrorAction Stop
         switch ($Service){
             "Harvester" {
                 Write-Information "Harvester service flagged, setting port and getting cert"
@@ -36,7 +38,7 @@ function Invoke-chiaRPCCommand {
 
     $Param = @{
         Method = "Post"
-        Uri = "https://localhost:$($Port)/$($Command)"
+        Uri = "https://$($HostName):$($Port)/$($Command)"
         ContentType = "application/json"
         Body = $Parameters
         Certificate = $Cert
