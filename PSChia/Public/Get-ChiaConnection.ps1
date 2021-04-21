@@ -1,11 +1,15 @@
 function Get-ChiaConnection {
     [CmdletBinding()]
-    param()
+    param(
+        [Parameter()]
+        [ValidateSet("Harvester","Wallet","Full_Node","Farmer")]
+        [string]$Service = "Full_Node"
+    )
 
     $Param = @{
         Command = "get_connections"
         Parameters = "" | ConvertTo-Json
-        Service = "Full_Node"
+        Service = $Service
     }
 
     $Response = Invoke-chiaRPCCommand @Param
