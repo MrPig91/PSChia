@@ -2,7 +2,7 @@ function Get-OpenSSLPath {
     [CmdletBinding()]
     param()
     $OpenSSLPath = "C:\Program Files\Git\mingw64\bin\openssl.exe"
-    $OpenSSL2ndPath = "$ENV:LOCALAPPDATA\Local\Programs\Git\mingw64\bin\openssl.exe"
+    $OpenSSL2ndPath = "$ENV:LOCALAPPDATA\Programs\Git\mingw64\bin\openssl.exe"
     if (Test-Path $OpenSSLPath){
         $OpenSSLPath
     }
