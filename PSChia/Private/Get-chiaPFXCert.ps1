@@ -13,10 +13,9 @@ function Get-chiaPFXCert{
         $PSChiaPath = "$ENV:LOCALAPPDATA\PSChia\$HostName"
         if (Test-Path "$PSChiaPath\$Service.pfx"){
             $encryptedPassword = Get-Content "$PSChiaPath\$($Service)Pass.txt"
-            $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
             $password = [pscredential]::new("Chia",(ConvertTo-SecureString -String $encryptedPassword)).GetNetworkCredential().Password
             Write-Information "Importing $Service PFX Cert"
-            $cert.Import("$PSChiaPath\$Service.pfx",$password,'DefaultKeySet')
+            $cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::New("$PSChiaPath\$Service.pfx",$password,'DefaultKeySet')
             $ErrorActionPreference = "Continue"
             return $cert
         }
