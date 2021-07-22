@@ -9,7 +9,7 @@ function Set-ChiaRewardTarget {
     )
 
     $Param = @{
-        Command = "get_reward_targets"
+        Command = "set_reward_targets"
         Parameters = @{farmer_target = $FarmerTargetAddress; pool_target = $PoolTargetAddress} | ConvertTo-Json
         Service = "Farmer"
     }
